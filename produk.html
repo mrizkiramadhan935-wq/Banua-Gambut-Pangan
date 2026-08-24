@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Katalog 10 pilihan beras Banua Gambut Pangan berdasarkan asal dan tekstur.">
+  <meta name="theme-color" content="#1C5E20">
+  <title>Produk | Banua Gambut Pangan</title>
+  <link rel="icon" type="image/png" href="assets/logo-bgp.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior:smooth; }
+    body { font-family:'Montserrat',sans-serif; }
+    ::selection { background:#E6C75D; color:#174B25; }
+    :root { --green:#1C5E20; --green-dark:#174B25; --gold:#CAA229; --gold-light:#E6C75D; --cream:#FFF9EF; --cream2:#F7EFDF; --soft-green:#EEF5E9; --soft-gold:#FFF2C7; --line:#E5D8BF; }
+    .soft-shadow { box-shadow:0 16px 44px rgba(28,94,32,.08); }
+    .fun-card { border:1px solid var(--line); border-radius:28px; background:#fff; box-shadow:0 10px 30px rgba(28,94,32,.06); transition:transform .25s ease, box-shadow .25s ease; }
+    .fun-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(28,94,32,.10); }
+    .product-card { display:flex; flex-direction:column; height:100%; border:1px solid var(--line); border-radius:28px; background:#fff; padding:14px; box-shadow:0 10px 28px rgba(28,94,32,.06); transition:transform .25s ease, box-shadow .25s ease; }
+    .product-card:hover { transform:translateY(-4px); box-shadow:0 20px 42px rgba(28,94,32,.11); }
+    .clamp-3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+    .filter-btn.active,.menu-choice.active { background:#1C5E20; color:white; border-color:#1C5E20; }
+    .hero-title { text-shadow:0 3px 28px rgba(0,0,0,.28); }
+    .hamburger span { display:block; height:2px; width:20px; border-radius:999px; background:#1C5E20; }
+  </style>
+</head>
+<body class="bg-[#FFF9EF] text-[#28442E] antialiased">
+<header class="sticky top-0 z-50 border-b border-[#1C5E20]/10 bg-[#FFF9EF]/95 backdrop-blur-xl">
+  <div class="mx-auto flex h-[82px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+    <a href="index.html" aria-label="Banua Gambut Pangan"><img src="assets/logo-bgp.png" alt="Logo Banua Gambut Pangan" class="h-12 w-auto sm:h-14"></a>
+    <nav class="hidden items-center gap-2 rounded-full border border-[#E5D8BF] bg-white/90 p-1.5 shadow-sm lg:flex" aria-label="Navigasi utama"><a class="rounded-full px-4 py-2 text-[13px] font-bold transition text-[#405D47] hover:bg-[#FFF2C7] hover:text-[#1C5E20]" href="index.html">Beranda</a><a class="rounded-full px-4 py-2 text-[13px] font-bold transition text-[#405D47] hover:bg-[#FFF2C7] hover:text-[#1C5E20]" href="tentang.html">Tentang Kami</a><a class="rounded-full px-4 py-2 text-[13px] font-bold transition bg-[#1C5E20] text-white shadow-sm" href="produk.html">Produk</a><a class="rounded-full px-4 py-2 text-[13px] font-bold transition text-[#405D47] hover:bg-[#FFF2C7] hover:text-[#1C5E20]" href="cari-beras.html">Cari Beras</a></nav>
+    <button id="menuButton" class="hamburger inline-flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-[#E5D8BF] bg-white shadow-sm lg:hidden" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <nav id="mobileMenu" class="hidden border-t border-[#E5D8BF] bg-[#FFF9EF] px-5 pb-5 lg:hidden" aria-label="Navigasi mobile"><div class="mx-auto flex max-w-[1440px] flex-col gap-1 pt-3"><a class="rounded-2xl px-4 py-3 text-[#405D47] font-semibold hover:bg-white" href="index.html">Beranda</a><a class="rounded-2xl px-4 py-3 text-[#405D47] font-semibold hover:bg-white" href="tentang.html">Tentang Kami</a><a class="rounded-2xl px-4 py-3 bg-[#EEF5E9] text-[#1C5E20] font-bold" href="produk.html">Produk</a><a class="rounded-2xl px-4 py-3 text-[#405D47] font-semibold hover:bg-white" href="cari-beras.html">Cari Beras</a></div></nav>
+</header>
+<main>
+<section class="bg-[#F7EFDF]"><div class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#CAA229]">Produk Banua Gambut Pangan</p><div class="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end"><h1 class="text-[clamp(3rem,6vw,6rem)] font-black leading-[0.96] tracking-[-0.055em] text-[#1C5E20] lg:col-span-8">Pilihan Beras Banua Gambut Pangan.</h1><p class="text-base leading-8 text-[#66716A] lg:col-span-4">Temukan berbagai pilihan beras berdasarkan asal dan karakter tekstur. Setiap produk memiliki ciri yang berbeda sehingga konsumen dapat memilih berdasarkan hasil nasi maupun kebutuhan menu.</p></div></div></section>
+<section class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-24"><div class="flex flex-col gap-5 border-b border-[#E5D8BF] pb-7 lg:flex-row lg:items-center lg:justify-between"><div><p class="text-sm font-extrabold text-[#1C5E20]">Filter berdasarkan tekstur</p><p id="productCount" class="mt-1 text-xs text-[#66716A]">10 produk ditampilkan.</p></div><div class="flex flex-wrap gap-2"><button type="button" data-filter="semua" class="filter-btn rounded-full border border-[#E5D8BF] bg-white px-4 py-2.5 text-sm font-bold text-[#405D47] transition hover:border-[#1C5E20] hover:text-[#1C5E20] active">Semua</button><button type="button" data-filter="pera / karau" class="filter-btn rounded-full border border-[#E5D8BF] bg-white px-4 py-2.5 text-sm font-bold text-[#405D47] transition hover:border-[#1C5E20] hover:text-[#1C5E20] ">Pera / Karau</button><button type="button" data-filter="pulen / lembek" class="filter-btn rounded-full border border-[#E5D8BF] bg-white px-4 py-2.5 text-sm font-bold text-[#405D47] transition hover:border-[#1C5E20] hover:text-[#1C5E20] ">Pulen / Lembek</button><button type="button" data-filter="sedang" class="filter-btn rounded-full border border-[#E5D8BF] bg-white px-4 py-2.5 text-sm font-bold text-[#405D47] transition hover:border-[#1C5E20] hover:text-[#1C5E20] ">Sedang</button><button type="button" data-filter="lemah" class="filter-btn rounded-full border border-[#E5D8BF] bg-white px-4 py-2.5 text-sm font-bold text-[#405D47] transition hover:border-[#1C5E20] hover:text-[#1C5E20] ">Lemah</button></div></div><div id="productGrid" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><article class="product-card" data-texture="pulen / lembek">
+      <a href="produk/c-hirang-inpari.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/c-hirang-inpari.jpg" alt="Beras C-Hirang / Inpari" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Hulu Sungai, Barabai</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras C-Hirang / Inpari</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Pulen / Lembek</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras C-Hirang atau Inpari berasal dari Hulu Sungai, Barabai. Setelah dimasak, beras ini menghasilkan nasi dengan tekstur pulen dan lembut sehingga cocok untuk konsumen yang menyukai nasi yang lebih empuk dan menyatu.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="sedang">
+      <a href="produk/siam.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/siam.jpg" alt="Beras Siam" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Banjar</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Siam</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Sedang</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Siam memiliki karakter tekstur sedang sehingga berada di antara pera dan pulen. Beras ini merupakan beras campuran yang digunakan untuk memberikan pilihan harga yang lebih terjangkau tanpa mengurangi kualitas dan rasa.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="lemah">
+      <a href="produk/r42.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/r42.jpg" alt="Beras R42" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Hulu Sungai, Barabai</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras R42</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Lemah</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras R42 berasal dari Hulu Sungai, Barabai dan memiliki tekstur nasi yang tergolong lemah. Beras ini merupakan beras hasil panen baru sehingga memiliki karakter nasi yang lebih lunak tetapi tidak termasuk pulen.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="pera / karau">
+      <a href="produk/siam-arjuna.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/siam-arjuna.jpg" alt="Beras Siam Arjuna" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Gambut</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Siam Arjuna</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Pera / Karau</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Siam Arjuna merupakan salah satu pilihan beras asal Gambut dengan karakter nasi pera atau karau. Setelah dimasak, butiran nasi cenderung lebih terpisah dan tidak terlalu lengket.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="pera / karau">
+      <a href="produk/siam-rukud.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/siam-rukud.jpg" alt="Beras Siam Rukud" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Gambut</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Siam Rukud</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Pera / Karau</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Siam Rukud berasal dari Gambut dan memiliki karakter nasi pera atau karau. Tekstur nasinya cenderung terpisah setelah matang sehingga cocok digunakan untuk berbagai menu yang membutuhkan nasi tidak terlalu lengket.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="lemah">
+      <a href="produk/siam-kupang.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/siam-kupang.jpg" alt="Beras Siam Kupang" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Hulu Sungai, Rantau</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Siam Kupang</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Lemah</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Siam Kupang berasal dari Hulu Sungai, Rantau dan memiliki tekstur nasi yang tergolong lemah. Produk ini merupakan beras hasil panen baru dengan karakter nasi yang lebih lunak dibandingkan beras pera.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="lemah">
+      <a href="produk/kupang-madu.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/kupang-madu.jpg" alt="Beras Kupang Madu" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Tanah Laut, Pelaihari</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Kupang Madu</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Lemah</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Kupang Madu berasal dari Tanah Laut, Pelaihari dan merupakan beras hasil panen baru. Tekstur nasinya tergolong lemah sehingga menghasilkan nasi yang tidak pulen tetapi terasa lebih lunak.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="pera / karau">
+      <a href="produk/unus-mayang.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/unus-mayang.jpg" alt="Beras Unus Mayang" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Gambut</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Unus Mayang</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Pera / Karau</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Unus Mayang merupakan salah satu beras asal Gambut yang sangat dikenal di Kalimantan Selatan dan menjadi salah satu produk best seller Banua Gambut Pangan. Karakter nasinya cenderung pera atau karau dengan butiran yang lebih terpisah setelah dimasak.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="pera / karau">
+      <a href="produk/unus-mutiara.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/unus-mutiara.jpg" alt="Beras Unus Mutiara" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Gambut</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Unus Mutiara</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Pera / Karau</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Unus Mutiara merupakan beras asal Gambut dengan tekstur nasi pera atau karau. Setelah dimasak, nasi memiliki karakter yang lebih terpisah dan tidak terlalu lengket.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article><article class="product-card" data-texture="lemah">
+      <a href="produk/siam-unus.html" class="flex h-full flex-col">
+        <div class="aspect-square overflow-hidden rounded-[22px] bg-[#F7EFDF]"><img src="assets/images/siam-unus.jpg" alt="Beras Siam Unus" class="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"></div>
+        <div class="flex flex-1 flex-col px-1 pb-1 pt-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#CAA229]">Gambut</p>
+          <h3 class="mt-2 text-xl font-extrabold tracking-[-0.02em] text-[#1C5E20]">Beras Siam Unus</h3>
+          <span class="mt-3 w-fit rounded-full bg-[#EEF5E9] px-3 py-1.5 text-xs font-bold text-[#1C5E20]">Lemah</span>
+          <p class="mt-4 clamp-3 text-sm leading-6 text-[#66716A]">Beras Siam Unus berasal dari Gambut dan memiliki karakter tekstur lemah. Nasinya tidak termasuk pulen tetapi memiliki tekstur yang lebih lunak dibandingkan beras dengan karakter pera atau karau.</p>
+          <div class="mt-5 border-t border-[#E5D8BF] pt-4 text-xs font-extrabold text-[#1C5E20]">Lihat Detail →</div>
+        </div>
+      </a>
+    </article></div></section>
+<section class="bg-[#FFF2C7] py-20"><div class="mx-auto grid max-w-[1440px] gap-8 px-5 sm:px-8 lg:grid-cols-12 lg:px-12"><div class="lg:col-span-7"><p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#CAA229]">Belum Yakin?</p><h2 class="mt-4 text-3xl font-black tracking-[-0.04em] text-[#1C5E20] sm:text-4xl">Mulai dari menu yang ingin kamu buat.</h2><p class="mt-4 max-w-2xl text-sm leading-7 text-[#66716A]">Jika memilih berdasarkan tekstur masih terasa sulit, gunakan fitur Cari Beras. Pilih menu terlebih dahulu, lalu website akan menampilkan pilihan produk yang sesuai.</p></div><div class="lg:col-span-5 lg:self-end lg:text-right"><a href="cari-beras.html" class="inline-block rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-extrabold text-white">Cari Beras</a></div></div></section>
+<script>
+const filterButtons=document.querySelectorAll('.filter-btn');
+const cards=[...document.querySelectorAll('[data-texture]')];
+const productCount=document.getElementById('productCount');
+filterButtons.forEach(btn=>btn.addEventListener('click',()=>{const value=btn.dataset.filter;filterButtons.forEach(b=>b.classList.toggle('active',b===btn));let visible=0;cards.forEach(card=>{const show=value==='semua'||card.dataset.texture===value;card.classList.toggle('hidden',!show);if(show)visible++;});productCount.textContent=`${visible} produk ditampilkan.`;}));
+</script>
+</main>
+<footer class="bg-[#174B25] text-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-16">
+    <div class="grid gap-12 border-b border-white/15 pb-12 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="text-[11px] font-extrabold uppercase tracking-[0.20em] text-[#E6C75D]">Banua Gambut Pangan</p>
+        <h2 class="mt-5 max-w-2xl text-3xl font-black tracking-[-0.035em] sm:text-4xl">Kenali Berasmu. Pilih Sesuai Kebutuhanmu.</h2>
+        <p class="mt-5 max-w-xl text-sm leading-7 text-white/70">Informasi beras lokal yang membantu konsumen mengenali asal, tekstur, dan kecocokan beras sebelum menentukan pilihan.</p>
+      </div>
+      <div class="lg:col-span-3 lg:col-start-9">
+        <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-white/45">Navigasi</p>
+        <div class="mt-5 flex flex-col gap-3 text-sm font-semibold"><a class="hover:text-[#E6C75D]" href="index.html">Beranda</a><a class="hover:text-[#E6C75D]" href="tentang.html">Tentang Kami</a><a class="hover:text-[#E6C75D]" href="produk.html">Produk</a><a class="hover:text-[#E6C75D]" href="cari-beras.html">Cari Beras</a></div>
+      </div>
+      <div class="lg:col-span-2">
+        <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-white/45">Terhubung</p>
+        <div class="mt-5 flex flex-col gap-3 text-sm font-semibold"><a class="hover:text-[#E6C75D]" href="https://www.instagram.com/banuagambutpangan?igsh=Zmlkb2gyNThha2g3" target="_blank" rel="noopener">Instagram</a><a class="hover:text-[#E6C75D]" href="https://id.shp.ee/tUFMU3xb" target="_blank" rel="noopener">Belanja Sekarang</a></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3 pt-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Banua Gambut Pangan.</p><p>Gambut, Kabupaten Banjar, Kalimantan Selatan.</p></div>
+  </div>
+</footer>
+<script>
+const menuButton=document.getElementById('menuButton');
+const mobileMenu=document.getElementById('mobileMenu');
+if(menuButton&&mobileMenu){menuButton.addEventListener('click',()=>{const open=!mobileMenu.classList.contains('hidden');mobileMenu.classList.toggle('hidden');menuButton.setAttribute('aria-expanded',String(!open));});}
+</script>
+</body>
+</html>
