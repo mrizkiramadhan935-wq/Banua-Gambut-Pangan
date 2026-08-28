@@ -100,14 +100,45 @@
       background: #1C5E20;
     }
 
-@keyframes greenPulse {
-  0%,100% { box-shadow: 0 0 12px rgba(28,94,32,.18); }
-  50% { box-shadow: 0 0 30px rgba(28,94,32,.75); }
+@keyframes borderSpin { to { transform: rotate(360deg); } }
+
+.animated-border {
+  position: relative;
+  overflow: hidden;
 }
 
-.green-pulse {
-  animation: greenPulse 2.2s ease-in-out infinite;
-}  </style>
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(transparent 0 70%, #1C5E20 85%, #45A049 100%);
+  animation: borderSpin 5s linear infinite;
+}
+
+.animated-border::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: white;
+  border-radius: inherit;
+}
+
+.animated-border > * {
+  position: relative;
+  z-index: 1;
+} 
+
+.reveal{
+  opacity:0;
+  transform:translateY(17px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
 </head>
 
 <body class="bg-[#FFF9EF] text-[#28442E] antialiased">
@@ -202,7 +233,7 @@
         </div>
       </div>
     </section>
-    <section class="mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-28">
+    <section class="mx-auto max-w-[1440px] pt-16 pb-16 sm:px-8 lg:pt-16 lg:pb-16">
       <div>
 
         <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
@@ -422,7 +453,7 @@
         </div>
       </div>
     </section>
-    <section class="bg-[#FFF9F0] py-20 lg:py-28">
+    <section class="bg-[#FFF9F0] pt-16 pb-16 lg:pt-16 lg:pb-16">
       <div class="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12">
 
         <!-- ========================= -->
@@ -612,7 +643,7 @@
 
       </div>
     </section>
-    <section class="bg-white py-24 lg:py-28">
+    <section class="bg-white pt-16 pb-16 lg:pt-16 lg:pb-16">
       <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
         <div>
@@ -1294,7 +1325,7 @@
 </a></div>
       </div>
     </section>
-<section class="bg-[#1C5E20] py-24 text-white lg:py-28">
+<section class="bg-[#1C5E20] pt-16 pb-16 text-white lg:pt-16 lg:pb-16">
   <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
     <!-- JUDUL + DESKRIPSI -->
@@ -1319,49 +1350,51 @@
     <div class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 
       <a href="cari-beras.html?menu=Nasi%20Goreng"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Nasi Goreng
       </a>
 
       <a href="cari-beras.html?menu=Nasi%20Uduk"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Nasi Uduk
       </a>
 
       <a href="cari-beras.html?menu=Nasi%20Kuning"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Nasi Kuning
       </a>
 
       <a href="cari-beras.html?menu=Lontong"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Lontong
       </a>
 
       <a href="cari-beras.html?menu=Ketupat"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Ketupat
       </a>
 
       <a href="cari-beras.html?menu=Lalapan"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Lalapan
       </a>
 
       <a href="cari-beras.html?menu=Catering"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Catering
       </a>
 
       <a href="cari-beras.html?menu=Konsumsi%20Harian"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1C5E20]">
+        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
         Konsumsi Harian
       </a>
 
     </div>
 
   </div>
-</section>    <section class="mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-28">
+</section>  
+  
+<section class="mx-auto max-w-[1440px] pt-16 pb-16 sm:px-8 lg:pt-16 lg:pb-16">
       <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
         <div class="lg:col-span-5">
           <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#E6C75D] sm:text-lg">Tentang Banua Gambut Pangan
@@ -1370,7 +1403,7 @@
             lokal dikemas untuk kebutuhan yang lebih praktis.</h2>
         </div>
         <div class="lg:col-span-7 lg:pl-8">
-          <div class="green-pulse rounded-[40px] bg-white p-10 soft-shadow sm:p-9">
+          <div class="animated-border rounded-[40px] bg-white p-10 soft-shadow sm:p-9">
             <p class="text-sm leading-8 text-[#66716A]">Banua Gambut Pangan berkembang dari aktivitas penjualan beras
               yang sebelumnya dilakukan melalui Toko Beras Iki. Dari proses tersebut ditemukan bahwa konsumen sering
               membeli beras untuk persediaan, tetapi tetap memasak dalam jumlah yang lebih kecil dan harus melakukan
@@ -1383,7 +1416,7 @@
         </div>
       </div>
     </section>
-    <section class="bg-[#FFF2C7] py-20">
+    <section class="bg-[#FFF2C7] pt-16 pb-16 lg:pt-16 lg:pb-16">
       <div
         class="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
         <div>
@@ -1397,12 +1430,11 @@
             class="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-[0.97]">
   Lihat Semua Produk <span class="text-base font-black">➜</span></a><a
             href="cari-beras.html"
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-[0.97]">
-  Cari Beras <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#1C5E20] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-[0.97]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" class="h-5 w-5">
                 <circle cx="11" cy="11" r="7"></circle>
                 <path stroke-linecap="round" d="m20 20-4-4" />
-              </svg></a></div>
+              </svg> Cari Beras</a></div>
       </div>
     </section>
   </main>
@@ -1442,6 +1474,27 @@
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuButton && mobileMenu) { menuButton.addEventListener('click', () => { const open = !mobileMenu.classList.contains('hidden'); mobileMenu.classList.toggle('hidden'); menuButton.setAttribute('aria-expanded', String(!open)); }); }
   </script>
+
+    <script>
+    const items=document.querySelectorAll('section > div, article, footer');
+
+    items.forEach((el,i)=>{
+      el.classList.add('reveal');
+      el.style.transitionDelay=`${(i%4)*80}ms`;
+    });
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12});
+
+    items.forEach(el=>observer.observe(el));
+    </script>
+
 </body>
 
 </html>
