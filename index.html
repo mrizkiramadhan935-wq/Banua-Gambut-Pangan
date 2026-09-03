@@ -100,33 +100,57 @@
       background: #1C5E20;
     }
 
-@keyframes borderSpin { to { transform: rotate(360deg); } }
+.about-story::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(28, 94, 32, .12) 1.4px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 4%, #000 32%, transparent 72%);
+  mask-image: linear-gradient(90deg, transparent 4%, #000 32%, transparent 72%);
+  opacity: .55;
+}
 
-.animated-border {
+.story-card {
   position: relative;
   overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
-.animated-border::before {
+.story-card::after {
   content: "";
   position: absolute;
-  inset: -50%;
-  background: conic-gradient(transparent 0 70%, #1C5E20 85%, #45A049 100%);
-  animation: borderSpin 5s linear infinite;
+  right: -34px;
+  bottom: -42px;
+  width: 118px;
+  height: 118px;
+  border: 24px solid rgba(255, 255, 255, .12);
+  border-radius: 999px;
 }
 
-.animated-border::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  background: white;
-  border-radius: inherit;
+.story-card:hover {
+  transform: translateY(-6px) rotate(-.35deg);
+  box-shadow: 0 24px 54px rgba(28, 94, 32, .16);
 }
 
-.animated-border > * {
-  position: relative;
-  z-index: 1;
-} 
+.size-chip {
+  transition: transform .25s ease, background-color .25s ease, color .25s ease;
+}
+
+.size-chip:nth-child(2) {
+  transform: rotate(-2deg);
+}
+
+.size-chip:nth-child(3) {
+  transform: rotate(2deg);
+}
+
+.size-chip:hover {
+  transform: translateY(-4px) rotate(0);
+  background: #1C5E20;
+  color: #fff;
+}
 
 .reveal{
   opacity:0;
@@ -148,6 +172,83 @@
   background:#FFF2C7;
   box-shadow:0 0 0 100vmax #FFF2C7;
   clip-path:inset(0 -100vmax);
+}
+
+.menu-marquee {
+  overflow: hidden;
+  padding-block: .45rem;
+}
+
+.menu-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.menu-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: .75rem;
+  padding-right: .75rem;
+}
+
+.menu-marquee-top .menu-marquee-track {
+  animation: menu-slide-right 28s linear infinite;
+}
+
+.menu-marquee-bottom .menu-marquee-track {
+  animation: menu-slide-left 28s linear infinite;
+}
+
+.menu-marquee:hover .menu-marquee-track,
+.menu-marquee:focus-within .menu-marquee-track {
+  animation-play-state: paused;
+}
+
+.menu-float-card {
+  width: clamp(230px, 22vw, 420px);
+  animation: menu-card-float 3.6s ease-in-out infinite;
+  box-shadow: 0 10px 28px rgba(8, 43, 17, .13);
+}
+
+.menu-float-card:nth-child(even) {
+  animation-delay: -1.8s;
+}
+
+@keyframes menu-slide-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes menu-slide-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes menu-card-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-marquee {
+    overflow-x: auto;
+  }
+
+  .menu-marquee-track,
+  .menu-float-card {
+    animation: none !important;
+  }
+
+  .story-card,
+  .size-chip {
+    transition: none;
+  }
+
+  .story-card:hover,
+  .size-chip:hover {
+    transform: none;
+  }
 }
 </style>
 </head>
@@ -1357,89 +1458,94 @@
   </p>
 </div>
     </div>
-
-
-    <!-- CARD MENU -->
-    <div class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-
-      <a href="cari-beras.html?menu=Nasi%20Goreng"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Nasi Goreng
-      </a>
-
-      <a href="cari-beras.html?menu=Nasi%20Uduk"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Nasi Uduk
-      </a>
-
-      <a href="cari-beras.html?menu=Nasi%20Kuning"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Nasi Kuning
-      </a>
-
-      <a href="cari-beras.html?menu=Lontong"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Lontong
-      </a>
-
-      <a href="cari-beras.html?menu=Ketupat"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Ketupat
-      </a>
-
-      <a href="cari-beras.html?menu=Lalapan"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Lalapan
-      </a>
-
-      <a href="cari-beras.html?menu=Catering"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Catering
-      </a>
-
-      <a href="cari-beras.html?menu=Konsumsi%20Harian"
-        class="rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] hover:shadow-lg active:translate-y-0 active:scale-[0.97]">
-        Konsumsi Harian
-      </a>
-
-    </div>
-
   </div>
-</section>  
-  
-<section class="bg-[#FFF9EF] py-16 sm:py-20 lg:py-24">
-  <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
-    <div class="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
 
-      <!-- KIRI -->
-      <div class="lg:col-span-5">
-        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
-          Tentang Banua Gambut Pangan
-        </p>
-
-        <h2 class="mt-6 text-4xl font-black leading-[1.05] tracking-[-0.045em] text-[#1C5E20] sm:text-5xl lg:text-[58px]">
-          Beras lokal, dikemas untuk kebutuhan yang lebih praktis.
-        </h2>
+    <!-- CARD MENU BERGERAK -->
+    <div class="mt-12 space-y-2" aria-label="Pilihan menu">
+      <div class="menu-marquee menu-marquee-top">
+        <div class="menu-marquee-track">
+          <div class="menu-marquee-group">
+            <a href="cari-beras.html?menu=Nasi%20Goreng" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Nasi Goreng</a>
+            <a href="cari-beras.html?menu=Nasi%20Uduk" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Nasi Uduk</a>
+            <a href="cari-beras.html?menu=Nasi%20Kuning" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Nasi Kuning</a>
+            <a href="cari-beras.html?menu=Lontong" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Lontong</a>
+          </div>
+          <div class="menu-marquee-group" aria-hidden="true">
+            <a href="cari-beras.html?menu=Nasi%20Goreng" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Nasi Goreng</a>
+            <a href="cari-beras.html?menu=Nasi%20Uduk" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Nasi Uduk</a>
+            <a href="cari-beras.html?menu=Nasi%20Kuning" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Nasi Kuning</a>
+            <a href="cari-beras.html?menu=Lontong" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Lontong</a>
+          </div>
+        </div>
       </div>
 
-      <!-- KANAN -->
-      <div class="lg:col-span-7 lg:max-w-[700px] lg:justify-self-end">
-        <div class="animated-border w-full rounded-[40px] bg-white p-6 sm:p-10 lg:p-14">
+      <div class="menu-marquee menu-marquee-bottom">
+        <div class="menu-marquee-track">
+          <div class="menu-marquee-group">
+            <a href="cari-beras.html?menu=Ketupat" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Ketupat</a>
+            <a href="cari-beras.html?menu=Lalapan" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Lalapan</a>
+            <a href="cari-beras.html?menu=Catering" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Catering</a>
+            <a href="cari-beras.html?menu=Konsumsi%20Harian" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Konsumsi Harian</a>
+          </div>
+          <div class="menu-marquee-group" aria-hidden="true">
+            <a href="cari-beras.html?menu=Ketupat" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Ketupat</a>
+            <a href="cari-beras.html?menu=Lalapan" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Lalapan</a>
+            <a href="cari-beras.html?menu=Catering" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Catering</a>
+            <a href="cari-beras.html?menu=Konsumsi%20Harian" tabindex="-1" class="menu-float-card rounded-[22px] border border-white/15 bg-white/10 px-5 py-5 text-left text-sm font-extrabold text-white transition-all duration-300 ease-out hover:scale-[1.03] hover:bg-white hover:text-[#1C5E20] active:scale-[0.97]">Konsumsi Harian</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          <p class="text-base font-medium leading-8 text-[#617064] sm:text-lg">
-            Banua Gambut Pangan berkembang dari aktivitas penjualan beras yang sebelumnya dilakukan melalui Toko Beras Iki. Dari proses tersebut ditemukan bahwa konsumen sering membeli beras untuk persediaan, tetapi tetap memasak dalam jumlah yang lebih kecil dan harus melakukan penakaran ulang.
-          </p>
+</section>  
+  
+<section class="about-story relative overflow-hidden bg-[#FFF9EF] py-16 sm:py-20 lg:py-24">
+  <div class="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+    <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
 
-          <p class="mt-8 text-base font-medium leading-8 text-[#617064] sm:text-lg">
-            Banua Gambut Pangan kemudian menghadirkan konsep kemasan siap takar dalam ukuran 1 liter, ½ liter, dan 1 mug serta memberikan informasi mengenai karakter setiap beras agar konsumen dapat memilih produk dengan lebih mudah.
-          </p>
+      <div class="lg:col-span-5">
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#E6C75D] sm:text-lg">
+          Tentang Kami
+        </p>
 
-          <a href="tentang.html"
-            class="mt-10 inline-flex items-center gap-2 text-sm font-extrabold text-[#1C5E20] transition hover:text-[#CAA229]">
-            Selengkapnya Tentang Kami <span class="text-base font-black">➜</span>
-          </a>
+        <h2 class="mt-7 max-w-xl text-4xl font-black leading-[1.02] tracking-[-0.05em] text-[#1C5E20] sm:text-5xl lg:text-[58px]">
+          Beras lokal, dibuat lebih mudah untuk keseharian.
+        </h2>
 
+        <p class="mt-6 max-w-lg text-base font-medium leading-8 text-[#617064]">
+          Kami berangkat dari kebiasaan pelanggan, lalu menghadirkan beras dengan informasi yang jelas dan takaran yang lebih praktis.
+        </p>
+
+        <a href="tentang.html"
+          class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#174B25] active:translate-y-0">
+          Kenal Lebih Dekat <span class="text-base font-black" aria-hidden="true">➜</span>
+        </a>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-5">
+          <article class="story-card rounded-[32px] bg-[#1C5E20] p-6 text-white shadow-[0_16px_40px_rgba(28,94,32,0.13)] sm:p-8">
+            <div class="relative z-10">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#F2D56B] text-sm font-black text-[#174B25]">01</span>
+              <p class="mt-8 text-xs font-extrabold uppercase tracking-[0.17em] text-[#F2D56B]">Cerita awal</p>
+              <h3 class="mt-3 text-2xl font-black leading-tight tracking-[-0.035em]">Berawal dari Toko Beras Iki.</h3>
+              <p class="mt-4 text-sm font-medium leading-7 text-white/75">
+                Kami melihat pelanggan membeli beras untuk persediaan, tetapi tetap memasak dalam jumlah kecil dan harus menakar ulang.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card rounded-[32px] bg-[#F2D56B] p-6 text-[#174B25] shadow-[0_16px_40px_rgba(202,162,41,0.16)] sm:mt-8 sm:p-8">
+            <div class="relative z-10">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-sm font-black text-[#1C5E20]">02</span>
+              <p class="mt-8 text-xs font-extrabold uppercase tracking-[0.17em] text-[#775A04]">Ide sederhana</p>
+              <h3 class="mt-3 text-2xl font-black leading-tight tracking-[-0.035em]">Masak secukupnya, tanpa ribet.</h3>
+              <p class="mt-4 text-sm font-semibold leading-7 text-[#4F4A2E]">
+                Dari kebutuhan itu lahir kemasan siap takar, lengkap dengan informasi karakter beras agar lebih mudah dipilih.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
 
