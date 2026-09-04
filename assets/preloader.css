@@ -1,0 +1,113 @@
+html.bgp-intro-pending,
+html.bgp-intro-pending body {
+  overflow: hidden;
+}
+
+.bgp-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fff9ef;
+  color: #1c5e20;
+  isolation: isolate;
+  transform: translateY(0);
+  transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.bgp-preloader__content {
+  display: flex;
+  width: min(84vw, 700px);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bgp-preloader__eyebrow {
+  margin: 0 0 clamp(20px, 3vw, 32px);
+  color: #9b7917;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.72rem, 1.2vw, 0.86rem);
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translateY(12px);
+  transition: opacity 550ms ease 100ms, transform 650ms cubic-bezier(0.16, 1, 0.3, 1) 100ms;
+}
+
+.bgp-preloader__logo {
+  display: block;
+  width: min(78vw, 640px);
+  height: auto;
+  opacity: 0;
+  transform: translateY(26px) scale(0.94);
+  transition: opacity 700ms ease 220ms, transform 900ms cubic-bezier(0.16, 1, 0.3, 1) 220ms;
+}
+
+.bgp-preloader__line {
+  width: min(62vw, 460px);
+  height: 3px;
+  margin-top: clamp(22px, 3vw, 34px);
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(28, 94, 32, 0.12);
+  opacity: 0;
+  transition: opacity 400ms ease 450ms;
+}
+
+.bgp-preloader__line::after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1c5e20, #d2a81f, #1c5e20);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.3s cubic-bezier(0.65, 0, 0.35, 1) 480ms;
+}
+
+.bgp-preloader.is-running .bgp-preloader__eyebrow,
+.bgp-preloader.is-running .bgp-preloader__logo {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bgp-preloader.is-running .bgp-preloader__line {
+  opacity: 1;
+}
+
+.bgp-preloader.is-running .bgp-preloader__line::after {
+  transform: scaleX(1);
+}
+
+.bgp-preloader.is-leaving {
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.bgp-preloader.is-leaving .bgp-preloader__content {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition: opacity 260ms ease, transform 400ms ease;
+}
+
+@media (max-width: 640px) {
+  .bgp-preloader__content {
+    width: 90vw;
+  }
+
+  .bgp-preloader__logo {
+    width: 88vw;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgp-preloader {
+    display: none;
+  }
+}

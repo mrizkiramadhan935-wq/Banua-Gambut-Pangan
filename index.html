@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="assets/preloader.css">
+  <script src="assets/preloader.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html {
@@ -116,17 +118,6 @@
   position: relative;
   overflow: hidden;
   transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.story-card::after {
-  content: "";
-  position: absolute;
-  right: -34px;
-  bottom: -42px;
-  width: 118px;
-  height: 118px;
-  border: 24px solid rgba(255, 255, 255, .12);
-  border-radius: 999px;
 }
 
 .story-card:hover {
@@ -251,6 +242,8 @@
   }
 }
 </style>
+  <link rel="stylesheet" href="assets/product-coverflow.css">
+  <script src="assets/product-coverflow.js" defer></script>
 </head>
 
 <body class="bg-[#FFF9EF] text-[#28442E] antialiased">
@@ -756,7 +749,7 @@
 
       </div>
     </section>
-    <section class="bg-[#FFF9F0] pt-16 pb-16 lg:pt-16 lg:pb-16">
+    <section class="bg-[#FFF9F0] pt-16 pb-0 lg:pt-16 lg:pb-0">
       <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
         <div>
@@ -805,9 +798,23 @@
 
         </div>
 
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="product-coverflow mt-12" data-product-coverflow>
+          <div class="product-coverflow__backdrop" data-coverflow-backdrop aria-hidden="true"></div>
+          <div class="product-coverflow__overlay" aria-hidden="true"></div>
+
+          <div class="product-coverflow__inner">
+            <div class="product-coverflow__viewport">
+              <button class="product-coverflow__nav product-coverflow__nav--prev" type="button"
+                data-coverflow-prev aria-label="Produk sebelumnya">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+
+              <div class="product-coverflow__stage" data-coverflow-stage tabindex="0" role="region"
+                aria-label="Pilihan produk beras">
           <!-- CARD PRODUK -->
-          <div class="col-span-full mt-12 grid w-full grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
             
   <!-- ====================================================== -->
 <!-- 1. BERAS C-HIRANG / INPARI -->
@@ -1430,12 +1437,21 @@
   </a>
 </article>
 
-</div>
+              </div>
+
+              <button class="product-coverflow__nav product-coverflow__nav--next" type="button"
+                data-coverflow-next aria-label="Produk berikutnya">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="product-coverflow__dots" data-coverflow-dots aria-label="Pilih produk beras"></div>
+
+          </div>
         </div>
-        <div class="mt-10 text-center"><a href="produk.html"
-  class="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-[0.97]">
-  Lihat Semua Produk <span class="text-base font-black">➜</span>
-</a></div>
       </div>
     </section>
 
