@@ -1,0 +1,71 @@
+.menu-float-card {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-float-card.is-preview-active {
+  z-index: 2;
+  border-color: transparent;
+  background: #fff;
+  color: #1c5e20;
+}
+
+.menu-hover-preview {
+  --menu-preview-tilt: -7deg;
+  position: fixed;
+  z-index: 60;
+  left: 0;
+  top: 0;
+  width: clamp(180px, 15vw, 220px);
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border: 2px solid rgba(255, 249, 240, 0.88);
+  border-radius: 20px;
+  background: #f5ead8;
+  box-shadow: 0 20px 48px rgba(8, 43, 17, 0.24);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, calc(-100% - 22px)) rotate(var(--menu-preview-tilt)) scale(0.78);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease,
+    transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: left, top, transform, opacity;
+}
+
+.menu-hover-preview.is-below {
+  transform: translate(-50%, 22px) rotate(var(--menu-preview-tilt)) scale(0.78);
+  transform-origin: 50% 0%;
+}
+
+.menu-hover-preview.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, calc(-100% - 22px)) rotate(var(--menu-preview-tilt)) scale(1);
+}
+
+.menu-hover-preview.is-visible.is-below {
+  transform: translate(-50%, 22px) rotate(var(--menu-preview-tilt)) scale(1);
+}
+
+.menu-hover-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .menu-hover-preview {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-hover-preview {
+    transition: none;
+  }
+}
