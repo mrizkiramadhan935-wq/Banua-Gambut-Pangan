@@ -1,0 +1,210 @@
+.character-carousel {
+  --character-side-left: clamp(-26rem, -32vw, -20.5rem);
+  --character-side-right: clamp(20.5rem, 32vw, 26rem);
+  position: relative;
+  margin-top: 1rem;
+  overflow: clip;
+  perspective: 1200px;
+  perspective-origin: center 48%;
+}
+
+.character-carousel__track {
+  position: relative;
+  width: 100%;
+  max-width: 70rem;
+  height: clamp(22rem, 36vw, 27rem);
+  margin-inline: auto;
+  outline: none;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.character-carousel__track:focus-visible {
+  border-radius: 2rem;
+  outline: 3px solid rgba(202, 162, 41, .35);
+  outline-offset: -3px;
+}
+
+.character-carousel__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: min(24rem, 78vw);
+  min-height: 17rem;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+  border: 1px solid rgba(28, 94, 32, .13);
+  border-radius: 1.75rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .99), rgba(247, 239, 223, .92));
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition-delay: 0s !important;
+  transition: opacity .6s ease,
+    transform 1s cubic-bezier(.22, .8, .2, 1),
+    border-color .35s ease;
+}
+
+.character-carousel__card[data-position="active"] {
+  z-index: 4;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) translate3d(0, 0, 8rem) rotateY(0deg) scale(1);
+  border-color: rgba(202, 162, 41, .72);
+}
+
+.character-carousel__card[data-position="previous"] {
+  z-index: 3;
+  opacity: .68;
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translate(-50%, -50%) translate3d(var(--character-side-left), 1.35rem, -7rem)
+    rotateY(52deg) scale(.88);
+}
+
+.character-carousel__card[data-position="next"] {
+  z-index: 3;
+  opacity: .68;
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translate(-50%, -50%) translate3d(var(--character-side-right), 1.35rem, -7rem)
+    rotateY(-52deg) scale(.88);
+}
+
+.character-carousel__card[data-position="far"] {
+  z-index: 1;
+  opacity: .14;
+  transform: translate(-50%, -50%) translate3d(0, -1.25rem, -22rem)
+    rotateY(0deg) scale(.65);
+}
+
+.character-carousel__title {
+  color: #1C5E20;
+  font-size: clamp(1.6rem, 2.3vw, 2rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+
+.character-carousel__description {
+  margin-top: 1.25rem;
+  color: #617064;
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+.character-carousel__controls {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: -1rem;
+}
+
+.character-carousel__button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border: 1px solid rgba(28, 94, 32, .18);
+  border-radius: 999px;
+  background: #fff;
+  padding: .7rem 1rem;
+  color: #1C5E20;
+  font-size: .75rem;
+  font-weight: 800;
+  transition: color .25s ease, background-color .25s ease,
+    border-color .25s ease, transform .25s ease;
+}
+
+.character-carousel__button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.character-carousel__button:hover {
+  transform: translateY(-2px);
+  border-color: #1C5E20;
+  background: #1C5E20;
+  color: #fff;
+}
+
+.character-carousel__button:active {
+  transform: scale(.95);
+}
+
+.character-carousel__button:focus-visible {
+  outline: 3px solid rgba(202, 162, 41, .42);
+  outline-offset: 3px;
+}
+
+.character-carousel__order {
+  display: inline-flex;
+  min-width: 5rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  border-radius: 999px;
+  background: #1C5E20;
+  color: rgba(255, 255, 255, .58);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.character-carousel__current {
+  color: #F3D66B;
+  font-size: .875rem;
+}
+
+@media (min-width: 640px) {
+  .character-carousel__track {
+    height: 25rem;
+  }
+
+  .character-carousel__card {
+    min-height: 18rem;
+    padding: 2.25rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .character-carousel {
+    --character-side-left: -68vw;
+    --character-side-right: 68vw;
+    margin-inline: -1.25rem;
+    margin-top: 1rem;
+  }
+
+  .character-carousel__track {
+    height: 22rem;
+  }
+
+  .character-carousel__card[data-position="previous"] {
+    transform: translate(-50%, -50%) translate3d(var(--character-side-left), 1rem, -6rem)
+      rotateY(48deg) scale(.82);
+  }
+
+  .character-carousel__card[data-position="next"] {
+    transform: translate(-50%, -50%) translate3d(var(--character-side-right), 1rem, -6rem)
+      rotateY(-48deg) scale(.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character-carousel__card,
+  .character-carousel__button {
+    transition: none;
+  }
+}

@@ -19,10 +19,13 @@
   <style>
     html {
       scroll-behavior: smooth;
+      overflow-x: clip;
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
+      max-width: 100%;
+      overflow-x: clip;
     }
 
     ::selection {
@@ -94,6 +97,166 @@
       text-shadow: 0 3px 28px rgba(0, 0, 0, .28);
     }
 
+    .section-label {
+      display: inline-flex;
+      width: fit-content;
+      max-width: 100%;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      padding: 0;
+      background:
+        linear-gradient(110deg, transparent 30%, #FFF2A8 48%, transparent 66%) -220% 0 / 220% 100% no-repeat,
+        linear-gradient(#CAA229, #CAA229);
+      color: #CAA229 !important;
+      line-height: 1.35;
+      text-align: center;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: sectionLabelShimmer 7s ease-in-out infinite;
+    }
+
+    .section-label--center {
+      display: flex;
+      margin-inline: auto;
+    }
+
+    .section-label--product {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: 999px;
+      padding: .65rem 1.1rem;
+      background: none;
+      color: #FFFFFF !important;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      -webkit-text-fill-color: #FFFFFF !important;
+      animation: none;
+    }
+
+    .section-label--product::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      border: 1px solid rgba(242, 213, 107, .42);
+      border-radius: inherit;
+      background: #1C5E20;
+    }
+
+    .section-label--product::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(110deg, transparent 30%, rgba(255, 242, 168, .2) 48%, transparent 66%);
+      transform: translateX(140%);
+      animation: sectionLabelProductShimmer 7s ease-in-out infinite;
+    }
+
+    @keyframes sectionLabelShimmer {
+      0%, 58% {
+        background-position: -220% 0, 0 0;
+      }
+
+      100% {
+        background-position: 220% 0, 0 0;
+      }
+    }
+
+    @keyframes sectionLabelProductShimmer {
+      0%, 58% {
+        transform: translateX(140%);
+      }
+
+      100% {
+        transform: translateX(-140%);
+      }
+    }
+
+    .about-story {
+      isolation: isolate;
+      max-width: 100%;
+      overflow: clip;
+      contain: paint;
+    }
+
+    .about-story__paddy {
+      position: absolute;
+      z-index: 0;
+      width: clamp(12rem, 23vw, 22rem);
+      height: auto;
+      display: block;
+      opacity: 1;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform;
+    }
+
+    .about-story__paddy--left {
+      bottom: -9rem;
+      left: -4rem;
+      transform-origin: 42% 100%;
+      animation: paddySwayLeft 8s ease-in-out infinite alternate;
+    }
+
+    .about-story__paddy--right {
+      top: auto;
+      right: -4rem;
+      bottom: -9rem;
+      transform-origin: 58% 100%;
+      animation: paddySwayRight 10s ease-in-out infinite alternate;
+      animation-delay: -2.5s;
+    }
+
+    @keyframes paddySwayLeft {
+      0%, 100% {
+        transform: rotate(-4deg) skewX(0deg);
+      }
+
+      45% {
+        transform: rotate(3deg) skewX(-1deg);
+      }
+
+      68% {
+        transform: rotate(1deg) skewX(.5deg);
+      }
+    }
+
+    @keyframes paddySwayRight {
+      0%, 100% {
+        transform: scaleX(-1) rotate(-4deg) skewX(0deg);
+      }
+
+      42% {
+        transform: scaleX(-1) rotate(3deg) skewX(-1deg);
+      }
+
+      72% {
+        transform: scaleX(-1) rotate(1deg) skewX(.5deg);
+      }
+    }
+
+    @media (max-width: 639px) {
+      .about-story__paddy {
+        width: 12rem;
+      }
+
+      .about-story__paddy--left {
+        bottom: -6rem;
+        left: -6rem;
+      }
+
+      .about-story__paddy--right {
+        top: auto;
+        right: -6rem;
+        bottom: -6rem;
+      }
+    }
+
     .hamburger span {
       display: block;
       height: 2px;
@@ -101,29 +264,6 @@
       border-radius: 999px;
       background: #1C5E20;
     }
-
-.about-story::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(28, 94, 32, .12) 1.4px, transparent 1.5px);
-  background-size: 24px 24px;
-  -webkit-mask-image: linear-gradient(90deg, transparent 4%, #000 32%, transparent 72%);
-  mask-image: linear-gradient(90deg, transparent 4%, #000 32%, transparent 72%);
-  opacity: .55;
-}
-
-.story-card {
-  position: relative;
-  overflow: hidden;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.story-card:hover {
-  transform: translateY(-6px) rotate(-.35deg);
-  box-shadow: 0 24px 54px rgba(28, 94, 32, .16);
-}
 
 .size-chip {
   transition: transform .25s ease, background-color .25s ease, color .25s ease;
@@ -156,12 +296,6 @@
 .full-green{
   background:#1C5E20;
   box-shadow:0 0 0 100vmax #1C5E20;
-  clip-path:inset(0 -100vmax);
-}
-
-.full-yellow{
-  background:#FFF2C7;
-  box-shadow:0 0 0 100vmax #FFF2C7;
   clip-path:inset(0 -100vmax);
 }
 
@@ -222,6 +356,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .section-label {
+    animation: none;
+  }
+
+  .section-label--product::after {
+    animation: none;
+  }
+
+  .about-story__paddy {
+    animation: none !important;
+  }
+
   .menu-marquee {
     overflow-x: auto;
   }
@@ -231,18 +377,18 @@
     animation: none !important;
   }
 
-  .story-card,
   .size-chip {
     transition: none;
   }
 
-  .story-card:hover,
   .size-chip:hover {
     transform: none;
   }
 }
 </style>
+  <link rel="stylesheet" href="assets/rice-character-carousel.css">
   <link rel="stylesheet" href="assets/product-coverflow.css">
+  <script src="assets/rice-character-carousel.js" defer></script>
   <script src="assets/product-coverflow.js" defer></script>
 </head>
 
@@ -342,7 +488,7 @@
     <div class="mx-auto max-w-[1440px] px-5 pt-10 sm:px-8 lg:px-12">
       <div>
 
-        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
+        <p class="section-label text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
           Mengapa Banua Gambut Pangan?
         </p>
 
@@ -559,78 +705,32 @@
         </div>
       </div>
     </div>
-    <section class="bg-[#FFF9F0] pt-16 pb-16 lg:pt-16 lg:pb-16">
+    <section class="bg-[#FFF9F0] pt-10 pb-10">
       <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
         <!-- ========================= -->
         <!-- BAGIAN JUDUL -->
         <!-- ========================= -->
 
-        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
+        <p class="section-label section-label--center text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
           Kenali Karakter Beras
         </p>
 
-        <div class="mt-6 grid gap-10 lg:grid-cols-3 lg:gap-12 lg:items-start">
-
-          <!-- Headline: 2 Kolom -->
-          <div class="lg:col-span-2">
-            <h2 class="text-left text-4xl font-black leading-[1.05] tracking-[-0.045em] text-[#1C5E20] sm:text-5xl lg:text-[58px]">
-              Empat karakter beras<br>
-              dengan pengalaman nasi<br>
-              yang berbeda-beda.
-            </h2>
-          </div>
-
-          <!-- Deskripsi: 1 Kolom -->
-          <div class="lg:col-span-1 lg:pt-2">
-            <p class="border-l-2 border-[#CAA229]/50 pl-7
-                     text-justify text-base font-medium
-                     leading-8 text-[#617064]">
-              Tekstur merupakan salah satu pertimbangan utama ketika memilih
-              beras. Banua Gambut Pangan membagi karakter beras ke dalam empat
-              kategori agar konsumen lebih mudah memahami hasil nasi setelah
-              dimasak.
-            </p>
-          </div>
-
-        </div>
-
-
         <!-- ========================= -->
-        <!-- BAGIAN 4 CARD -->
+        <!-- CAROUSEL 4 KARAKTER -->
         <!-- ========================= -->
 
-        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="character-carousel" data-character-carousel>
+          <div class="character-carousel__track" id="rice-character-track" data-character-track tabindex="0"
+            role="region" aria-label="Empat karakter beras">
 
           <!-- CARD 1 -->
-          <article class="group cursor-pointer rounded-[28px] border border-[#E6DCC8]
-                                                 bg-white p-7
-                                                 transition-all duration-300 ease-out
-                                                 hover:-translate-y-2
-                                                 hover:border-[#CAA229]
-                                                 hover:bg-[#1C5E20]
-                                                 hover:shadow-[0_20px_45px_rgba(28,94,32,0.20)]
-                                                 active:-translate-y-1
-                                                 active:scale-[0.98]">
-
-            <span class="inline-flex h-10 min-w-10 items-center justify-center
-                     rounded-full bg-[#F6F1E4] px-3
-                     text-xs font-extrabold text-[#CAA229]
-                     transition-all duration-300
-                     group-hover:bg-[#CAA229]
-                     group-hover:text-white">
-              01
-            </span>
-
-            <h3 class="mt-8 text-2xl font-extrabold
-                     text-[#1C5E20]
-                     transition-colors duration-300
-                     group-hover:text-[#CAA229]">
+          <article class="character-carousel__card">
+            <h3 class="character-carousel__title">
               Pera / Karau
             </h3>
 
-            <p class="mt-5 text-sm font-medium leading-7 text-[#66716A] transition-colors duration-300
-                     group-hover:text-[#FFF9F0]">
+            <p class="character-carousel__description">
               Butiran nasi cenderung lebih terpisah, tidak terlalu lengket,
               serta memiliki tekstur yang lebih kering dan kokoh.
             </p>
@@ -639,34 +739,12 @@
 
 
           <!-- CARD 2 -->
-          <article class="group cursor-pointer rounded-[28px] border border-[#E6DCC8]
-                                                 bg-white p-7
-                                                 transition-all duration-300 ease-out
-                                                 hover:-translate-y-2
-                                                 hover:border-[#CAA229]
-                                                 hover:bg-[#1C5E20]
-                                                 hover:shadow-[0_20px_45px_rgba(28,94,32,0.20)]
-                                                 active:-translate-y-1
-                                                 active:scale-[0.98]">
-
-            <span class="inline-flex h-10 min-w-10 items-center justify-center
-                     rounded-full bg-[#F6F1E4] px-3
-                     text-xs font-extrabold text-[#CAA229]
-                     transition-all duration-300
-                     group-hover:bg-[#CAA229]
-                     group-hover:text-white">
-              02
-            </span>
-
-            <h3 class="mt-8 text-2xl font-extrabold
-                     text-[#1C5E20]
-                     transition-colors duration-300
-                     group-hover:text-[#CAA229]">
+          <article class="character-carousel__card">
+            <h3 class="character-carousel__title">
               Pulen / Lembek
             </h3>
 
-            <p class="mt-5 text-sm font-medium leading-7 text-[#66716A] transition-colors duration-300
-                     group-hover:text-[#FFF9F0]">
+            <p class="character-carousel__description">
               Nasi memiliki tekstur lebih lembut, lebih menyatu, dan
               cenderung lebih lengket dibandingkan beras pera.
             </p>
@@ -675,34 +753,12 @@
 
 
           <!-- CARD 3 -->
-          <article class="group cursor-pointer rounded-[28px] border border-[#E6DCC8]
-                                                 bg-white p-7
-                                                 transition-all duration-300 ease-out
-                                                 hover:-translate-y-2
-                                                 hover:border-[#CAA229]
-                                                 hover:bg-[#1C5E20]
-                                                 hover:shadow-[0_20px_45px_rgba(28,94,32,0.20)]
-                                                 active:-translate-y-1
-                                                 active:scale-[0.98]">
-
-            <span class="inline-flex h-10 min-w-10 items-center justify-center
-                     rounded-full bg-[#F6F1E4] px-3
-                     text-xs font-extrabold text-[#CAA229]
-                     transition-all duration-300
-                     group-hover:bg-[#CAA229]
-                     group-hover:text-white">
-              03
-            </span>
-
-            <h3 class="mt-8 text-2xl font-extrabold
-                     text-[#1C5E20]
-                     transition-colors duration-300
-                     group-hover:text-[#CAA229]">
+          <article class="character-carousel__card">
+            <h3 class="character-carousel__title">
               Sedang
             </h3>
 
-            <p class="mt-5 text-sm font-medium leading-7 text-[#66716A] transition-colors duration-300
-                     group-hover:text-[#FFF9F0]">
+            <p class="character-carousel__description">
               Karakter nasi berada di antara pera dan pulen sehingga lebih
               fleksibel digunakan untuk berbagai kebutuhan.
             </p>
@@ -711,98 +767,59 @@
 
 
           <!-- CARD 4 -->
-          <article class="group cursor-pointer rounded-[28px] border border-[#E6DCC8]
-                                                 bg-white p-7
-                                                 transition-all duration-300 ease-out
-                                                 hover:-translate-y-2
-                                                 hover:border-[#CAA229]
-                                                 hover:bg-[#1C5E20]
-                                                 hover:shadow-[0_20px_45px_rgba(28,94,32,0.20)]
-                                                 active:-translate-y-1
-                                                 active:scale-[0.98]">
-
-            <span class="inline-flex h-10 min-w-10 items-center justify-center
-                     rounded-full bg-[#F6F1E4] px-3
-                     text-xs font-extrabold text-[#CAA229]
-                     transition-all duration-300
-                     group-hover:bg-[#CAA229]
-                     group-hover:text-white">
-              04
-            </span>
-
-            <h3 class="mt-8 text-2xl font-extrabold
-                     text-[#1C5E20]
-                     transition-colors duration-300
-                     group-hover:text-[#CAA229]">
+          <article class="character-carousel__card">
+            <h3 class="character-carousel__title">
               Lemah
             </h3>
 
-            <p class="mt-5 text-sm font-medium leading-7 text-[#66716A] transition-colors duration-300
-                     group-hover:text-[#FFF9F0]">
+            <p class="character-carousel__description">
               Nasi tidak termasuk pulen tetapi memiliki tekstur yang lebih
               lunak dan tidak sekokoh beras pera atau karau.
             </p>
 
           </article>
 
+          </div>
+
+          <div class="character-carousel__controls" aria-label="Navigasi karakter beras">
+            <button class="character-carousel__button" type="button" data-character-prev
+              aria-controls="rice-character-track">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span>Sebelumnya</span>
+            </button>
+
+            <p class="character-carousel__order" aria-live="polite" aria-atomic="true">
+              <span class="character-carousel__current" data-character-current>01</span>
+              <span aria-hidden="true">/</span>
+              <span data-character-total>04</span>
+            </p>
+
+            <button class="character-carousel__button" type="button" data-character-next
+              aria-controls="rice-character-track">
+              <span>Berikutnya</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
 
       </div>
     </section>
-    <section class="bg-[#FFF9F0] pt-16 pb-0 lg:pt-16 lg:pb-0">
+    <section class="bg-[#FFF9F0] pt-0 pb-0">
       <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
-        <div>
-
-          <!-- SUB JUDUL -->
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#CAA229] sm:text-lg">
-            Pilihan Beras Kami
-          </p>
-
-
-          <!-- AREA JUDUL + DESKRIPSI -->
-          <div class="mt-6 grid gap-10 lg:grid-cols-3 lg:gap-12 lg:items-start">
-
-            <!-- ========================= -->
-            <!-- JUDUL KIRI - 2 KOLOM -->
-            <!-- ========================= -->
-
-            <div class="lg:col-span-2">
-
-              <h2 class="text-left text-4xl font-black leading-[1.05] tracking-[-0.045em] text-[#1C5E20] sm:text-5xl lg:text-[58px]">
-  Kenali jenis-jenis beras <br>
-  sebelum menentukan yang paling sesuai.
-</h2>
-
-            </div>
-
-
-            <!-- ========================= -->
-            <!-- DESKRIPSI KANAN - 1 KOLOM -->
-            <!-- ========================= -->
-
-            <div class="lg:col-span-1 lg:pt-2">
-
-              <p class="w-full border-l-2 border-[#CAA229]/50
-                     pl-7 text-left text-base
-                     font-medium leading-8
-                     text-[#617064]">
-                Kenali pilihan beras Banua Gambut Pangan berdasarkan asal
-                dan karakter teksturnya. Buka setiap produk untuk melihat
-                informasi yang lebih lengkap sebelum menentukan pilihan.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="product-coverflow mt-12" data-product-coverflow>
+        <div class="product-coverflow" data-product-coverflow>
           <div class="product-coverflow__backdrop" data-coverflow-backdrop aria-hidden="true"></div>
           <div class="product-coverflow__overlay" aria-hidden="true"></div>
 
           <div class="product-coverflow__inner">
+            <p class="product-coverflow__eyebrow section-label section-label--product section-label--center">Pilihan Beras Kami</p>
+
             <div class="product-coverflow__viewport">
               <button class="product-coverflow__nav product-coverflow__nav--prev" type="button"
                 data-coverflow-prev aria-label="Produk sebelumnya">
@@ -1455,12 +1472,12 @@
       </div>
     </section>
 
-<section class="full-green pt-16 pb-16 text-white lg:pt-16 lg:pb-16">
+<section class="full-green pt-10 pb-16 text-white lg:pb-16">
   <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
     <!-- JUDUL + DESKRIPSI -->
     <div>
-      <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#E6C75D] sm:text-lg">
+      <p class="section-label text-sm font-bold uppercase tracking-[0.22em] text-[#E6C75D] sm:text-lg">
         Cari Beras
       </p>
 
@@ -1516,93 +1533,28 @@
 
 </section>  
   
-<section class="about-story relative overflow-hidden bg-[#FFF9EF] py-16 sm:py-20 lg:py-24">
-  <div class="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-    <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+<section class="about-story relative overflow-hidden bg-[#FFF9EF] pt-10 pb-16 sm:pb-20 lg:pb-24">
+  <img class="about-story__paddy about-story__paddy--left" src="assets/images/rice-paddy-accent.png" alt="" aria-hidden="true">
+  <img class="about-story__paddy about-story__paddy--right" src="assets/images/rice-paddy-accent.png" alt="" aria-hidden="true">
+  <div class="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label section-label--center text-sm font-bold uppercase tracking-[0.22em] text-[#A17B0E] sm:text-lg">
+        Tentang Kami
+      </p>
 
-      <div class="lg:col-span-5">
-        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#E6C75D] sm:text-lg">
-          Tentang Kami
-        </p>
+      <h2 class="mx-auto mt-6 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.05em] text-[#1C5E20] sm:text-5xl lg:text-[52px]">
+        Beras lokal, dibuat lebih mudah untuk keseharian.
+      </h2>
 
-        <h2 class="mt-7 max-w-xl text-4xl font-black leading-[1.02] tracking-[-0.05em] text-[#1C5E20] sm:text-5xl lg:text-[58px]">
-          Beras lokal, dibuat lebih mudah untuk keseharian.
-        </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-base font-medium leading-8 text-[#617064]">
+        Kami berangkat dari kebiasaan pelanggan, lalu menghadirkan beras dengan informasi yang jelas dan takaran yang lebih praktis.
+      </p>
 
-        <p class="mt-6 max-w-lg text-base font-medium leading-8 text-[#617064]">
-          Kami berangkat dari kebiasaan pelanggan, lalu menghadirkan beras dengan informasi yang jelas dan takaran yang lebih praktis.
-        </p>
-
-        <a href="tentang.html"
-          class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#174B25] active:translate-y-0">
-          Kenal Lebih Dekat <span class="text-base font-black" aria-hidden="true">➜</span>
-        </a>
-      </div>
-
-      <div class="lg:col-span-7">
-        <div class="grid gap-4 sm:grid-cols-2 sm:gap-5">
-          <article class="story-card rounded-[32px] bg-[#1C5E20] p-6 text-white shadow-[0_16px_40px_rgba(28,94,32,0.13)] sm:p-8">
-            <div class="relative z-10">
-              <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#F2D56B] text-sm font-black text-[#174B25]">01</span>
-              <p class="mt-8 text-xs font-extrabold uppercase tracking-[0.17em] text-[#F2D56B]">Cerita awal</p>
-              <h3 class="mt-3 text-2xl font-black leading-tight tracking-[-0.035em]">Berawal dari Toko Beras Iki.</h3>
-              <p class="mt-4 text-sm font-medium leading-7 text-white/75">
-                Kami melihat pelanggan membeli beras untuk persediaan, tetapi tetap memasak dalam jumlah kecil dan harus menakar ulang.
-              </p>
-            </div>
-          </article>
-
-          <article class="story-card rounded-[32px] bg-[#F2D56B] p-6 text-[#174B25] shadow-[0_16px_40px_rgba(202,162,41,0.16)] sm:mt-8 sm:p-8">
-            <div class="relative z-10">
-              <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-sm font-black text-[#1C5E20]">02</span>
-              <p class="mt-8 text-xs font-extrabold uppercase tracking-[0.17em] text-[#775A04]">Ide sederhana</p>
-              <h3 class="mt-3 text-2xl font-black leading-tight tracking-[-0.035em]">Masak secukupnya, tanpa ribet.</h3>
-              <p class="mt-4 text-sm font-semibold leading-7 text-[#4F4A2E]">
-                Dari kebutuhan itu lahir kemasan siap takar, lengkap dengan informasi karakter beras agar lebih mudah dipilih.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="full-yellow py-16">
-  <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-
-    <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#E6C75D] sm:text-lg">
-      Mulai dari Sini
-    </p>
-
-    <h2 class="mt-5 text-4xl font-black leading-[1.05] tracking-[-0.045em] text-[#1C5E20] sm:text-5xl lg:text-[43px]">
-      Sudah tahu beras yang kamu cari?
-    </h2>
-
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[#66716A]">
-      Lihat seluruh pilihan beras Banua Gambut Pangan atau gunakan fitur Cari Beras untuk menemukan produk berdasarkan menu yang ingin dibuat.
-    </p>
-
-    <div class="mt-7 flex flex-wrap gap-3">
-      <a href="produk.html"
-        class="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.97]">
-        Lihat Semua Produk <span class="font-black">➜</span>
+      <a href="tentang.html"
+        class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#1C5E20] px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#174B25] active:translate-y-0">
+        Kenal Lebih Dekat <span class="text-base font-black" aria-hidden="true">➜</span>
       </a>
-
-      <a href="cari-beras.html"
-  class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#1C5E20] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.97]">
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
-    <circle cx="11" cy="11" r="7"></circle>
-    <path stroke-linecap="round" d="m20 20-4-4" />
-  </svg>
-
-  Cari Beras
-</a>
-
     </div>
-
   </div>
 </section>
 
